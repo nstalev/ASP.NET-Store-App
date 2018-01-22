@@ -10,7 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Store.Models.EntityModels;
 using Store.Models.ViewModels.Account;
-
+using Store.Services;
 
 namespace Store.Web.Controllers
 {
@@ -19,9 +19,12 @@ namespace Store.Web.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private AccountService service;
+
 
         public AccountController()
         {
+            this.service = new AccountService();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -160,6 +163,9 @@ namespace Store.Web.Controllers
                
                     if (result.Succeeded)
                     {
+
+                    this.service.creataWorker(user.Id);
+
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                         // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

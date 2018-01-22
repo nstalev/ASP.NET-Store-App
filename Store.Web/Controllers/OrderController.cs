@@ -1,9 +1,7 @@
-﻿using Store.Models.BindingModels.Order;
+﻿using Store.Models.BindingModels.Orders;
+using Store.Models.ViewModels.Orders;
 using Store.Services;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Store.Web.Controllers
@@ -21,7 +19,10 @@ namespace Store.Web.Controllers
         // GET: Order
         public ActionResult Index()
         {
-            return View();
+
+            IEnumerable<AllOrdersVM> vms = service.GetAllOrdersVM();
+
+            return View(vms);
         }
 
 
@@ -34,12 +35,17 @@ namespace Store.Web.Controllers
 
         // POST: Order/Create
         [HttpPost]
-        public ActionResult Create([Bind(Include = "ModelName, ClientName, City, School, PhoneNumber")]CreateOrderBM bind)
+       // public ActionResult Create([Bind(Include = "ModelName, ClientName, City, School, PhoneNumber, TestDate, ")]CreateOrderBM bind)
+        public ActionResult Create(CreateOrderBM bind)
         {
+
+            var currentUser = User.Identity.Name;
+
+
             if (this.ModelState.IsValid)
             {
 
-                service.CreateNewOrder(bind);
+                service.CreateNewOrder(currentUser, bind);
 
                 return this.RedirectToAction("Index");
             }

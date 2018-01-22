@@ -2,10 +2,8 @@ namespace Store.Data
 {
     using Microsoft.AspNet.Identity.EntityFramework;
     using Store.Models.EntityModels;
-    using Store.Models.EntityModels.Order;
-    using System;
+    using Store.Models.EntityModels.Orders;
     using System.Data.Entity;
-    using System.Linq;
 
     public class StoreContext : IdentityDbContext<ApplicationUser>
     {
@@ -17,6 +15,9 @@ namespace Store.Data
 
 
         public DbSet<Order> Orders { get; set; }
+        public DbSet<Worker> Workers { get; set; }
+
+
 
         public static StoreContext Create()
         {

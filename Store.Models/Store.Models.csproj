@@ -81,9 +81,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\SCodeAttribute.cs" />
-    <Compile Include="BindingModels\Order\CreateOrderBM.cs" />
+    <Compile Include="BindingModels\Orders\CreateOrderBM.cs" />
     <Compile Include="EntityModels\ApplicationUser.cs" />
-    <Compile Include="EntityModels\Order\Order.cs" />
+    <Compile Include="EntityModels\Orders\Order.cs" />
+    <Compile Include="EntityModels\Worker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginListViewModel.cs" />
@@ -102,7 +103,8 @@
     <Compile Include="ViewModels\Manage\ManageLoginsViewModel.cs" />
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
-    <Compile Include="ViewModels\Order\CreateOrderVM.cs" />
+    <Compile Include="ViewModels\Orders\AllOrdersVM.cs" />
+    <Compile Include="ViewModels\Orders\CreateOrderVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

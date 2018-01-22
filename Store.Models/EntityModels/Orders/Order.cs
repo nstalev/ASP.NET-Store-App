@@ -1,6 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
-namespace Store.Models.EntityModels.Order
+namespace Store.Models.EntityModels.Orders
 {
     public class Order
     {
@@ -28,6 +29,24 @@ namespace Store.Models.EntityModels.Order
         [MaxLength(25)]
         public string PhoneNumber { get; set; }
 
+
+        public DateTime DateCreated { get; set; }
+
+
+        public DateTime TestDate { get; set; }
+
+        public DateTime WedingDate { get; set; }
+
+
+        public int ChestLap { get; set; }
+
+        public int PodgradnaLap { get; set; }
+
+        public int Waist { get; set; }
+
+        public int LowWaist { get; set; }
+
+        public Worker CutOutDressWorker { get; set; }
 
 
 

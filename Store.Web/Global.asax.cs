@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
-using Store.Models.BindingModels.Order;
-using Store.Models.EntityModels.Order;
+using Store.Models.BindingModels.Orders;
+using Store.Models.EntityModels.Orders;
+using Store.Models.ViewModels.Orders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,7 @@ namespace Store.Web
             Mapper.Initialize(expression =>
             {
                 expression.CreateMap<CreateOrderBM, Order>();
+                expression.CreateMap<CreateOrderBM, AllOrdersVM>();
 
             });
         }

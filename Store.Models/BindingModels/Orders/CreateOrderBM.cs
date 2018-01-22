@@ -1,6 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
-namespace Store.Models.BindingModels.Order
+namespace Store.Models.BindingModels.Orders
 {
     public class CreateOrderBM
     {
@@ -28,6 +29,17 @@ namespace Store.Models.BindingModels.Order
         public string PhoneNumber { get; set; }
 
 
+        public DateTime TestDate { get; set; }
 
+        public DateTime WedingDate { get; set; }
+
+
+        public int ChestLap { get; set; }
+
+        public int PodgradnaLap { get; set; }
+
+        public int Waist { get; set; }
+
+        public int LowWaist { get; set; }
     }
 }
