@@ -13,6 +13,8 @@ namespace Store.Models.EntityModels
     {
         public string FullName { get; set; }
 
+        public bool IsActive { get; set; }
+
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
