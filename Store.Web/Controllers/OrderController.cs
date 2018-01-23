@@ -1,4 +1,5 @@
-﻿using Store.Data;
+﻿using PagedList;
+using Store.Data;
 using Store.Models.BindingModels.Orders;
 using Store.Models.EntityModels;
 using Store.Models.ViewModels.Orders;
@@ -23,12 +24,15 @@ namespace Store.Web.Controllers
 
         }
         // GET: Order
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
 
             IEnumerable<AllOrdersVM> vms = service.GetAllOrdersVM();
 
-            return View(vms);
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+            return View(vms.ToPagedList(pageNumber, pageSize));
         }
 
 

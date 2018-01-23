@@ -1,4 +1,6 @@
-﻿namespace Store.Models.ViewModels.Orders
+﻿using System;
+
+namespace Store.Models.ViewModels.Orders
 {
     public class AllOrdersVM
     {
@@ -9,6 +11,8 @@
         public string ClientName { get; set; }
 
         public string City { get; set; }
+
+        public DateTime WedingDate { get; set; }
 
     }
 }
