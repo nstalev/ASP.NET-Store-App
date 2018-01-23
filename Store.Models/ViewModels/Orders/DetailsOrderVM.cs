@@ -1,24 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Web.Mvc;
 
 namespace Store.Models.ViewModels.Orders
 {
-    public class EditOrderVM
+    public class DetailsOrderVM
     {
-       
+        public string Id { get; set; }
+
         public string ModelName { get; set; }
 
-       
+
         public string ClientName { get; set; }
 
-        
+
         public string City { get; set; }
 
 
         public string School { get; set; }
 
-       
+
         public string PhoneNumber { get; set; }
 
 
@@ -39,9 +38,5 @@ namespace Store.Models.ViewModels.Orders
         public int LowWaist { get; set; }
 
         public string CutOutDressWorkerName { get; set; }
-
-
-        public IEnumerable<SelectListItem> Workers { get; set; }
-
     }
 }

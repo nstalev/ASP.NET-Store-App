@@ -106,6 +106,7 @@
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Orders\AllOrdersVM.cs" />
     <Compile Include="ViewModels\Orders\CreateOrderVM.cs" />
+    <Compile Include="ViewModels\Orders\DetailsOrderVM.cs" />
     <Compile Include="ViewModels\Orders\EditOrderVM.cs" />
   </ItemGroup>
   <ItemGroup>

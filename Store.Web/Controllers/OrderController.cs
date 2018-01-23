@@ -74,7 +74,6 @@ namespace Store.Web.Controllers
 
 
 
-
         // POST: Order/Edit/5
         [HttpPost]
         public ActionResult Edit(EditOrderBM bind )
@@ -98,11 +97,30 @@ namespace Store.Web.Controllers
             
         }
 
+
+        public ActionResult Details(int id)
+        {
+
+            var vm = service.GetDetailsOrderVM(id);
+
+            return View(vm);
+        }
+
+
+
         // GET: Order/Delete/5
         public ActionResult Delete(int id)
         {
+
+
             return View();
         }
+
+
+
+
+
+
 
         // POST: Order/Delete/5
         [HttpPost]

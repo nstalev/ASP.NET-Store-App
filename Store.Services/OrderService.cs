@@ -29,7 +29,7 @@ namespace Store.Services
 
         public IEnumerable<AllOrdersVM> GetAllOrdersVM()
         {
-            IEnumerable<Order> orders = context.Orders;
+            IEnumerable<Order> orders = context.Orders.OrderByDescending(o => o.DateCreated);
 
             IEnumerable<AllOrdersVM> vms = Mapper.Map<IEnumerable<Order>, IEnumerable<AllOrdersVM>>(orders);
 
@@ -79,6 +79,16 @@ namespace Store.Services
 
 
 
+        }
+
+        public object GetDetailsOrderVM(int id)
+        {
+
+            Order order = context.Orders.Find(id);
+
+            var vm = Mapper.Map<Order, DetailsOrderVM>(order);
+
+            return vm;
         }
     }
 }
