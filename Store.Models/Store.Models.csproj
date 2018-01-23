@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="Attributes\SCodeAttribute.cs" />
     <Compile Include="BindingModels\Orders\CreateOrderBM.cs" />
+    <Compile Include="BindingModels\Orders\EditOrderBM.cs" />
     <Compile Include="EntityModels\ApplicationUser.cs" />
     <Compile Include="EntityModels\Orders\Order.cs" />
     <Compile Include="EntityModels\Worker.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Orders\AllOrdersVM.cs" />
     <Compile Include="ViewModels\Orders\CreateOrderVM.cs" />
+    <Compile Include="ViewModels\Orders\EditOrderVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

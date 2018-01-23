@@ -1,6 +1,9 @@
-﻿using Store.Models.BindingModels.Orders;
+﻿using Store.Data;
+using Store.Models.BindingModels.Orders;
+using Store.Models.EntityModels;
 using Store.Models.ViewModels.Orders;
 using Store.Services;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -10,10 +13,13 @@ namespace Store.Web.Controllers
     public class OrderController : Controller
     {
         private OrderService service;
+        private StoreContext context;
+
 
         public OrderController()
         {
             this.service = new OrderService();
+            this.context = new StoreContext();
 
         }
         // GET: Order
@@ -56,23 +62,40 @@ namespace Store.Web.Controllers
         // GET: Order/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            EditOrderVM vm = service.GetEditOrderVM(id);
+
+             List<Worker> workers = service.getAllWorkers();
+
+                vm.Workers = GetSelectedListWorker(workers);
+
+            return View(vm);
         }
+
+
+
+
 
         // POST: Order/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(EditOrderBM bind )
         {
-            try
-            {
-                // TODO: Add update logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
+            EditOrderVM vm = service.GetEditOrderVM(bind.Id);
+
+            List<Worker> workers = service.getAllWorkers();
+
+            vm.Workers = GetSelectedListWorker(workers);
+
+            if (this.ModelState.IsValid)
             {
-                return View();
+                service.GetEditOrderVM(bind);
+
+                return this.RedirectToAction("Index");
             }
+
+
+            return View(vm);
+            
         }
 
         // GET: Order/Delete/5
@@ -96,5 +119,25 @@ namespace Store.Web.Controllers
                 return View();
             }
         }
+
+
+        private IEnumerable<SelectListItem> GetSelectedListWorker(List<Worker> workers)
+        {
+            var selectList = new List<SelectListItem>();
+
+            foreach (var worker in workers)
+            {
+                selectList.Add(new SelectListItem
+                {
+                    Value = worker.Name,
+                    Text = worker.Name
+                });
+            }
+
+            return selectList;
+        }
+
+
+
     }
 }

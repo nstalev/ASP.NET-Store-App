@@ -1,32 +1,28 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using Store.Models.EntityModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web.Mvc;
 
-namespace Store.Models.EntityModels.Orders
+namespace Store.Models.ViewModels.Orders
 {
-    public class Order
+    public class EditOrderVM
     {
-        public int Id { get; set; }
-
-        [Required]
-        [MinLength(3)]
-        [MaxLength(40)]
+       
         public string ModelName { get; set; }
 
-        [Required]
-        [MinLength(3)]
-        [MaxLength(40)]
+       
         public string ClientName { get; set; }
 
-        [Required]
-        [MinLength(3)]
+        
         public string City { get; set; }
 
 
         public string School { get; set; }
 
-        [Required]
-        [MinLength(5)]
-        [MaxLength(25)]
+       
         public string PhoneNumber { get; set; }
 
 
@@ -46,11 +42,10 @@ namespace Store.Models.EntityModels.Orders
 
         public int LowWaist { get; set; }
 
-
-        public virtual Worker CutOutDressWorker { get; set; }
-
+        public string CutOutDressWorkerName { get; set; }
 
 
+        public IEnumerable<SelectListItem> Workers { get; set; }
 
     }
 }

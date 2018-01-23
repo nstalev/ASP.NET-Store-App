@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Store.Models.BindingModels.Orders;
+using Store.Models.EntityModels;
 using Store.Models.EntityModels.Orders;
 using Store.Models.ViewModels.Orders;
 using System;
@@ -35,6 +36,48 @@ namespace Store.Services
 
 
             return vms;
+
+        }
+
+        public EditOrderVM GetEditOrderVM(int id)
+        {
+            Order currentOrder = context.Orders.Find(id);
+
+            EditOrderVM vm = Mapper.Map<Order, EditOrderVM>(currentOrder);
+
+            return vm;
+
+        }
+
+        public List<Worker> getAllWorkers()
+        {
+            var workers = context.Workers.OrderBy(u => u.Name);
+
+            return workers.ToList(); ;
+        }
+
+        public void GetEditOrderVM(EditOrderBM bind)
+        {
+
+            Order currentOrder = context.Orders.Find(bind.Id);
+            Worker cuOutDressWorker = context.Workers.FirstOrDefault(w => w.Name == bind.CutOutDressWorkerName);
+
+            currentOrder.ModelName = bind.ModelName;
+            currentOrder.ClientName = bind.ClientName;
+            currentOrder.City = bind.City;
+            currentOrder.School = bind.School;
+            currentOrder.PhoneNumber = bind.PhoneNumber;
+            currentOrder.TestDate = bind.TestDate;
+            currentOrder.WedingDate = bind.WedingDate;
+            currentOrder.ChestLap = bind.ChestLap;
+            currentOrder.PodgradnaLap = bind.PodgradnaLap;
+            currentOrder.Waist = bind.Waist;
+            currentOrder.LowWaist = bind.LowWaist;
+            currentOrder.CutOutDressWorker = cuOutDressWorker;
+
+            context.SaveChanges();
+
+
 
         }
     }

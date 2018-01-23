@@ -16,6 +16,7 @@ namespace Store.Services
             var user = context.Users.Find(id);
 
             worker.User = user;
+            worker.Name = user.FullName;
             context.Workers.Add(worker);
 
             context.SaveChanges();

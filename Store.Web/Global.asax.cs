@@ -30,6 +30,9 @@ namespace Store.Web
             {
                 expression.CreateMap<CreateOrderBM, Order>();
                 expression.CreateMap<CreateOrderBM, AllOrdersVM>();
+                expression.CreateMap<Order, EditOrderVM>().ForMember(c => c.CutOutDressWorkerName,
+                     configurationExpression =>
+                     configurationExpression.MapFrom(u => u.CutOutDressWorker.Name));
 
             });
         }

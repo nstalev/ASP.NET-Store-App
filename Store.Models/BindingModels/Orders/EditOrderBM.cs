@@ -1,10 +1,16 @@
-﻿using System;
+﻿using Store.Models.EntityModels;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Store.Models.EntityModels.Orders
+namespace Store.Models.BindingModels.Orders
 {
-    public class Order
+    public class EditOrderBM
     {
+
         public int Id { get; set; }
 
         [Required]
@@ -30,7 +36,6 @@ namespace Store.Models.EntityModels.Orders
         public string PhoneNumber { get; set; }
 
 
-        public DateTime DateCreated { get; set; }
 
 
         public DateTime TestDate { get; set; }
@@ -46,10 +51,7 @@ namespace Store.Models.EntityModels.Orders
 
         public int LowWaist { get; set; }
 
-
-        public virtual Worker CutOutDressWorker { get; set; }
-
-
+        public string CutOutDressWorkerName { get; set; }
 
 
     }
