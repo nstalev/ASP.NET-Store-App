@@ -24,10 +24,26 @@ namespace Store.Web.Controllers
 
         }
         // GET: Order
-        public ActionResult Index(int? page)
+        public ActionResult Index(string searchString, int? page)
         {
+            IEnumerable<AllOrdersVM> vms;
 
-            IEnumerable<AllOrdersVM> vms = service.GetAllOrdersVM();
+            if (searchString != null)
+            {
+                page = 1;
+            }
+
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                vms = service.GetAllOrdersVMWithSearching(searchString);
+
+            }
+            else
+            {
+                vms = service.GetAllOrdersVM();
+
+            }
 
             int pageSize = 5;
             int pageNumber = (page ?? 1);

@@ -27,6 +27,19 @@ namespace Store.Services
 
         }
 
+        public IEnumerable<AllOrdersVM> GetAllOrdersVMWithSearching(string searchString)
+        {
+            IEnumerable<Order> orders = context.Orders.Where(n => n.ClientName.Contains(searchString) 
+                || n.ModelName.Contains(searchString))
+                .OrderByDescending(o => o.DateCreated);
+
+            IEnumerable<AllOrdersVM> vms = Mapper.Map<IEnumerable<Order>, IEnumerable<AllOrdersVM>>(orders);
+
+
+            return vms;
+        }
+
+
         public IEnumerable<AllOrdersVM> GetAllOrdersVM()
         {
             IEnumerable<Order> orders = context.Orders.OrderByDescending(o => o.DateCreated);
