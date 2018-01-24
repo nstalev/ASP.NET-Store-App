@@ -25,13 +25,42 @@ namespace Store.Services
 
         }
 
-        public IEnumerable<AllActiveCategoriesVM> GetAllActiveCategories()
+        public IEnumerable<AllCategoriesVM> GetAllActiveCategories()
         {
             IEnumerable<Category> activeCategories = context.Categories.Where(c => c.IsActive == true).OrderBy(cat => cat.Name);
 
-            var vms = Mapper.Map<IEnumerable<Category>, IEnumerable<AllActiveCategoriesVM>>(activeCategories);
+            var vms = Mapper.Map<IEnumerable<Category>, IEnumerable<AllCategoriesVM>>(activeCategories);
 
             return vms;
+        }
+
+        public IEnumerable<AllCategoriesVM> GetAllInActiveCategories()
+        {
+            IEnumerable<Category> activeCategories = context.Categories.Where(c => c.IsActive == false).OrderBy(cat => cat.Name);
+
+            var vms = Mapper.Map<IEnumerable<Category>, IEnumerable<AllCategoriesVM>>(activeCategories);
+
+            return vms;
+        }
+
+        public EditCategoryVM GetEditCategoryVM(int id)
+        {
+            Category currentCategory = context.Categories.Find(id);
+
+            var vm = Mapper.Map<Category, EditCategoryVM>(currentCategory);
+
+            return vm;
+
+        }
+
+        public void GetEditCategory(EditCategoryBM bind)
+        {
+            Category category = context.Categories.Find(bind.Id);
+
+            category.Name = bind.Name;
+            category.PricePerHour = bind.PricePerHour;
+            category.IsActive = bind.IsActive;
+            context.SaveChanges();
         }
     }
 }

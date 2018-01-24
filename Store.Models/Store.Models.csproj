@@ -88,6 +88,7 @@
   <ItemGroup>
     <Compile Include="Attributes\SCodeAttribute.cs" />
     <Compile Include="BindingModels\Categories\CreateCategoryBM.cs" />
+    <Compile Include="BindingModels\Categories\EditCategoryBM.cs" />
     <Compile Include="BindingModels\Orders\CreateOrderBM.cs" />
     <Compile Include="BindingModels\Orders\EditOrderBM.cs" />
     <Compile Include="EntityModels\ApplicationUser.cs" />
@@ -105,8 +106,9 @@
     <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
-    <Compile Include="ViewModels\Categories\AllActiveCategoriesVM.cs" />
+    <Compile Include="ViewModels\Categories\AllCategoriesVM.cs" />
     <Compile Include="ViewModels\Categories\CreateCategoryVM.cs" />
+    <Compile Include="ViewModels\Categories\EditCategoryVM.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Manage\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\ConfigureTwoFactorViewModel.cs" />

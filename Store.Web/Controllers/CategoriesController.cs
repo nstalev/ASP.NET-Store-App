@@ -22,20 +22,26 @@ namespace Store.Web.Controllers
         }
 
 
+
+
         // GET: Categories
         public ActionResult Index()
         {
 
-            IEnumerable<AllActiveCategoriesVM> vms = this.service.GetAllActiveCategories();
+            IEnumerable<AllCategoriesVM> vms = this.service.GetAllActiveCategories();
 
             return View(vms);
         }
 
-        // GET: Categories/Details/5
-        public ActionResult Details(int id)
+        [HttpGet]
+        public ActionResult InActive()
         {
-            return View();
+
+            IEnumerable<AllCategoriesVM> vms = this.service.GetAllInActiveCategories();
+
+            return View(vms);
         }
+
 
 
 
@@ -60,47 +66,30 @@ namespace Store.Web.Controllers
         }
 
         // GET: Categories/Edit/5
+        [HttpGet]
         public ActionResult Edit(int id)
         {
-            return View();
+
+            EditCategoryVM vm = service.GetEditCategoryVM(id);
+
+            return View(vm);
         }
 
         // POST: Categories/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(EditCategoryBM bind)
         {
-            try
-            {
-                // TODO: Add update logic here
+            EditCategoryVM vm = service.GetEditCategoryVM(bind.Id);
 
-                return RedirectToAction("Index");
-            }
-            catch
+            if (this.ModelState.IsValid)
             {
-                return View();
+                this.service.GetEditCategory(bind);
+                return this.RedirectToAction("Index");
             }
+
+            return View(vm);
         }
 
-        // GET: Categories/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Categories/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+     
     }
 }

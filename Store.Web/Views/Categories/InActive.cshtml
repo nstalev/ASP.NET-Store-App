@@ -1,26 +1,23 @@
 ﻿@model IEnumerable<Store.Models.ViewModels.Categories.AllCategoriesVM>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "InActive";
 }
 
-<h2>Категории</h2>
+<h2>Неактивни Категории</h2>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-10">
-            <p>
-                @Html.ActionLink("Create New", "Create")
-            </p>
         </div>
         <div class="col-sm-2">
             <p>
-                @Html.ActionLink("InActive Categories", "InActive")
+                @Html.ActionLink("Active Categories", "Index")
             </p>
         </div>
-        
+
 
     </div>
-    </div>
+</div>
 <table class="table">
     <tr>
         <th>
@@ -42,8 +39,7 @@
                 @Html.DisplayFor(modelItem => item.PricePerHour)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id })
 
             </td>
         </tr>

@@ -33,7 +33,8 @@ namespace Store.Web
                 expression.CreateMap<CreateOrderBM, Order>();
                 expression.CreateMap<CreateOrderBM, AllOrdersVM>();
                 expression.CreateMap<Order, DetailsOrderVM>();
-                expression.CreateMap<Category, AllActiveCategoriesVM>();
+                expression.CreateMap<Category, AllCategoriesVM>();
+                expression.CreateMap<Category, EditCategoryVM>();
                 expression.CreateMap<Order, EditOrderVM>().ForMember(c => c.CutOutDressWorkerName,
                      configurationExpression =>
                      configurationExpression.MapFrom(u => u.CutOutDressWorker.Name));
