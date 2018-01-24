@@ -1,10 +1,18 @@
-﻿using System;
+﻿using Store.Models.EntityModels.Manipulations;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Store.Models.EntityModels.Orders
 {
     public class Order
     {
+
+        public Order()
+        {
+            this.Manipulations = new HashSet<Manipulation>();
+        }
+
         public int Id { get; set; }
 
         [Required]
@@ -49,7 +57,7 @@ namespace Store.Models.EntityModels.Orders
 
         public virtual Worker CutOutDressWorker { get; set; }
 
-
+        public virtual ICollection<Manipulation> Manipulations { get; set; }
 
 
     }
