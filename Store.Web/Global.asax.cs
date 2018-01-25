@@ -5,6 +5,7 @@ using Store.Models.EntityModels.Categories;
 using Store.Models.EntityModels.Manipulations;
 using Store.Models.EntityModels.Orders;
 using Store.Models.ViewModels.Categories;
+using Store.Models.ViewModels.Manipulations;
 using Store.Models.ViewModels.Orders;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -34,7 +35,13 @@ namespace Store.Web
                 expression.CreateMap<Category, AllCategoriesVM>();
                 expression.CreateMap<Category, EditCategoryVM>();
 
-                
+
+                expression.CreateMap<Manipulation, ListManipulationsVM>()
+                .ForMember(c => c.Worker, configurationExpression =>
+                     configurationExpression.MapFrom(u => u.Worker.Name))
+                .ForMember(c => c.Category, configurationExpression =>
+                     configurationExpression.MapFrom(u => u.Category.Name));
+
                 expression.CreateMap<Order, EditOrderVM>().ForMember(c => c.CutOutDressWorkerName,
                      configurationExpression =>
                      configurationExpression.MapFrom(u => u.CutOutDressWorker.Name));

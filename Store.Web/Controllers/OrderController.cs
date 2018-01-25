@@ -124,12 +124,10 @@ namespace Store.Web.Controllers
         public ActionResult Details(int id)
         {
 
-            var vm = service.GetDetailsOrderVM(id);
+            DetailsOrderVM vm = service.GetDetailsOrderVM(id);
 
             return View(vm);
         }
-
-
 
 
         [HttpGet]
@@ -156,7 +154,7 @@ namespace Store.Web.Controllers
             {
 
                 this.service.CreateMaipulation(id, bind);
-                return this.RedirectToAction("Index");
+                return this.RedirectToAction("Details", new { id });
             }
 
             return View();

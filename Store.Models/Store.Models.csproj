@@ -119,6 +119,7 @@
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Manipulations\CreateManipulationVM.cs" />
+    <Compile Include="ViewModels\Manipulations\ListManipulationsVM.cs" />
     <Compile Include="ViewModels\Orders\AllOrdersVM.cs" />
     <Compile Include="ViewModels\Orders\CreateOrderVM.cs" />
     <Compile Include="ViewModels\Orders\DetailsOrderVM.cs" />

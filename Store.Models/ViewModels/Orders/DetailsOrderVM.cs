@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Store.Models.ViewModels.Manipulations;
+using System;
+using System.Collections.Generic;
 
 namespace Store.Models.ViewModels.Orders
 {
@@ -38,5 +40,8 @@ namespace Store.Models.ViewModels.Orders
         public int LowWaist { get; set; }
 
         public string CutOutDressWorkerName { get; set; }
+
+
+        public IEnumerable<ListManipulationsVM> Manipulations { get; set; }
     }
 }

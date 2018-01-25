@@ -98,12 +98,18 @@ namespace Store.Services
 
         }
 
-        public object GetDetailsOrderVM(int id)
+        public DetailsOrderVM GetDetailsOrderVM(int id)
         {
 
             Order order = context.Orders.Find(id);
 
+            IEnumerable<Manipulation> currentManipulations = order.Manipulations;
+
+            var manipulVM = Mapper.Map<IEnumerable<Manipulation>, IEnumerable<ListManipulationsVM>>(currentManipulations);
+
             var vm = Mapper.Map<Order, DetailsOrderVM>(order);
+
+            vm.Manipulations = manipulVM;
 
             return vm;
         }
