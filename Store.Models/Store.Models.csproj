@@ -89,6 +89,7 @@
     <Compile Include="Attributes\SCodeAttribute.cs" />
     <Compile Include="BindingModels\Categories\CreateCategoryBM.cs" />
     <Compile Include="BindingModels\Categories\EditCategoryBM.cs" />
+    <Compile Include="BindingModels\Manipulations\CreateManipulationBM.cs" />
     <Compile Include="BindingModels\Orders\CreateOrderBM.cs" />
     <Compile Include="BindingModels\Orders\EditOrderBM.cs" />
     <Compile Include="EntityModels\ApplicationUser.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="ViewModels\Manage\ManageLoginsViewModel.cs" />
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="ViewModels\Manipulations\CreateManipulationVM.cs" />
     <Compile Include="ViewModels\Orders\AllOrdersVM.cs" />
     <Compile Include="ViewModels\Orders\CreateOrderVM.cs" />
     <Compile Include="ViewModels\Orders\DetailsOrderVM.cs" />

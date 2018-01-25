@@ -1,7 +1,11 @@
 ﻿using AutoMapper;
+using Store.Models.BindingModels.Manipulations;
 using Store.Models.BindingModels.Orders;
 using Store.Models.EntityModels;
+using Store.Models.EntityModels.Categories;
+using Store.Models.EntityModels.Manipulations;
 using Store.Models.EntityModels.Orders;
+using Store.Models.ViewModels.Manipulations;
 using Store.Models.ViewModels.Orders;
 using System;
 using System.Collections.Generic;
@@ -102,6 +106,47 @@ namespace Store.Services
             var vm = Mapper.Map<Order, DetailsOrderVM>(order);
 
             return vm;
+        }
+
+        public CreateManipulationVM GetCreateManipulationVM(int id)
+        {
+            CreateManipulationVM vm = new CreateManipulationVM();
+            vm.OrderId = id;
+            return vm;
+        }
+
+        public IEnumerable<Category> getAllCategoris()
+        {
+            var categories = context.Categories
+                .Where(c => c.IsActive == true)
+                .OrderBy(c => c.Name);
+
+            return categories;
+        }
+
+        public void CreateMaipulation(int orderId, CreateManipulationBM bind)
+        {
+
+            Order currentOrder = context.Orders.Find(orderId);
+            Worker currentWorker = context.Workers.FirstOrDefault(w => w.Name == bind.Worker);
+            Category selectedCategory = context.Categories.Find(int.Parse(bind.Category));
+
+
+            Manipulation manipulation = new Manipulation()
+            {
+                Description = bind.Description,
+                ManipulationDate = DateTime.Now,
+                Amount = bind.Amount,
+                TimeNeeded = bind.TimeNeeded,
+                Category = selectedCategory,
+                Order = currentOrder,
+                Worker = currentWorker
+            };
+
+            context.Manipulation.Add(manipulation);
+            context.SaveChanges();
+
+           
         }
     }
 }

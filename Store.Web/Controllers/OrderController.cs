@@ -1,7 +1,10 @@
 ﻿using PagedList;
 using Store.Data;
+using Store.Models.BindingModels.Manipulations;
 using Store.Models.BindingModels.Orders;
 using Store.Models.EntityModels;
+using Store.Models.EntityModels.Categories;
+using Store.Models.ViewModels.Manipulations;
 using Store.Models.ViewModels.Orders;
 using Store.Services;
 using System;
@@ -128,10 +131,33 @@ namespace Store.Web.Controllers
 
 
 
-        // GET: Order/Delete/5
-        public ActionResult Delete(int id)
-        {
 
+        [HttpGet]
+        public ActionResult AddManipulation(int id)
+        {
+            CreateManipulationVM vm = service.GetCreateManipulationVM(id);
+
+            List<Worker> workers = service.getAllWorkers();
+
+            IEnumerable<Category> categories = service.getAllCategoris();
+
+
+
+            vm.Workers = GetSelectedListWorker(workers);
+            vm.Categories = GetSelectedListCategories(categories);
+
+            return View(vm);
+        }
+
+        [HttpPost]
+        public ActionResult AddManipulation(int id, CreateManipulationBM bind)
+        {
+            if (this.ModelState.IsValid)
+            {
+
+                this.service.CreateMaipulation(id, bind);
+                return this.RedirectToAction("Index");
+            }
 
             return View();
         }
@@ -140,23 +166,6 @@ namespace Store.Web.Controllers
 
 
 
-
-
-        // POST: Order/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
 
         private IEnumerable<SelectListItem> GetSelectedListWorker(List<Worker> workers)
@@ -175,6 +184,21 @@ namespace Store.Web.Controllers
             return selectList;
         }
 
+        private IEnumerable<SelectListItem> GetSelectedListCategories(IEnumerable<Category> categories)
+        {
+            var selectList = new List<SelectListItem>();
+
+            foreach (var category in categories)
+            {
+                selectList.Add(new SelectListItem
+                {
+                    Value = category.Id.ToString(),
+                    Text = category.Name
+                });
+            }
+
+            return selectList;
+        }
 
 
     }

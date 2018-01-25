@@ -1,5 +1,6 @@
 ﻿
 using System.Collections.Generic;
+using Store.Models.EntityModels.Manipulations;
 using Store.Models.EntityModels.Orders;
 
 namespace Store.Models.EntityModels
@@ -10,6 +11,7 @@ namespace Store.Models.EntityModels
         public Worker()
         {
             this.OrdersCutOutDress = new  HashSet<Order>();
+            this.Manipulations = new HashSet<Manipulation>();
         }
 
         public int Id { get; set; }
@@ -19,6 +21,8 @@ namespace Store.Models.EntityModels
         public virtual ApplicationUser User { get; set; }
 
        public virtual ICollection<Order> OrdersCutOutDress { get; set; }
+
+       public virtual ICollection<Manipulation> Manipulations { get; set; }
 
     }
 }

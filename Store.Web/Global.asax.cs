@@ -1,13 +1,11 @@
 ﻿using AutoMapper;
+using Store.Models.BindingModels.Manipulations;
 using Store.Models.BindingModels.Orders;
 using Store.Models.EntityModels.Categories;
+using Store.Models.EntityModels.Manipulations;
 using Store.Models.EntityModels.Orders;
 using Store.Models.ViewModels.Categories;
 using Store.Models.ViewModels.Orders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -35,6 +33,8 @@ namespace Store.Web
                 expression.CreateMap<Order, DetailsOrderVM>();
                 expression.CreateMap<Category, AllCategoriesVM>();
                 expression.CreateMap<Category, EditCategoryVM>();
+
+                
                 expression.CreateMap<Order, EditOrderVM>().ForMember(c => c.CutOutDressWorkerName,
                      configurationExpression =>
                      configurationExpression.MapFrom(u => u.CutOutDressWorker.Name));
