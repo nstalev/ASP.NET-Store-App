@@ -73,7 +73,7 @@ namespace Store.Services
             return workers.ToList(); ;
         }
 
-        public void GetEditOrderVM(EditOrderBM bind)
+        public void EditOrder(EditOrderBM bind)
         {
 
             Order currentOrder = context.Orders.Find(bind.Id);
@@ -134,8 +134,9 @@ namespace Store.Services
         {
 
             Order currentOrder = context.Orders.Find(orderId);
-            Worker currentWorker = context.Workers.FirstOrDefault(w => w.Name == bind.Worker);
-            Category selectedCategory = context.Categories.Find(int.Parse(bind.Category));
+             Worker currentWorker = context.Workers.FirstOrDefault(w => w.Name == bind.Worker);
+           // Worker currentWorker = context.Workers.Find(int.Parse(bind.Worker));
+            Category selectedCategory = context.Categories.FirstOrDefault(c => c.Name == bind.Category);
 
 
             Manipulation manipulation = new Manipulation()
@@ -153,6 +154,37 @@ namespace Store.Services
             context.SaveChanges();
 
            
+        }
+
+        public EditManipulationVM GetEditManipulationVM(int orderId, int manId)
+        {
+
+            Manipulation manipulation = context.Manipulation.Find(manId);
+
+            EditManipulationVM vm = Mapper.Map<Manipulation, EditManipulationVM>(manipulation);
+
+            return vm;
+        }
+
+        public void EditManipulation(int manId, EditManipulationBM bind)
+        {
+            Manipulation currentManipulation = context.Manipulation.Find(manId);
+
+
+            Worker selectedWorker = context.Workers.FirstOrDefault(w => w.Name == bind.Worker);
+
+            Category selectedCategory = context.Categories.FirstOrDefault(c => c.Name == bind.Category);
+
+
+            currentManipulation.Description = bind.Description;
+            currentManipulation.TimeNeeded = bind.TimeNeeded;
+            currentManipulation.Amount = bind.Amount;
+            currentManipulation.Worker = selectedWorker;
+            currentManipulation.Category = selectedCategory;
+
+
+            context.SaveChanges();
+
         }
     }
 }

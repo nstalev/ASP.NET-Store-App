@@ -42,6 +42,13 @@ namespace Store.Web
                 .ForMember(c => c.Category, configurationExpression =>
                      configurationExpression.MapFrom(u => u.Category.Name));
 
+                expression.CreateMap<Manipulation, EditManipulationVM>()
+                .ForMember(c => c.Worker, configurationExpression =>
+                     configurationExpression.MapFrom(u => u.Worker.Name))
+                .ForMember(c => c.Category, configurationExpression =>
+                     configurationExpression.MapFrom(u => u.Category.Name));
+
+
                 expression.CreateMap<Order, EditOrderVM>().ForMember(c => c.CutOutDressWorkerName,
                      configurationExpression =>
                      configurationExpression.MapFrom(u => u.CutOutDressWorker.Name));

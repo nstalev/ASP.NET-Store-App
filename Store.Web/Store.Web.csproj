@@ -314,6 +314,7 @@
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\InActive.cshtml" />
     <Content Include="Views\Order\AddManipulation.cshtml" />
+    <Content Include="Views\Order\EditManipulation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

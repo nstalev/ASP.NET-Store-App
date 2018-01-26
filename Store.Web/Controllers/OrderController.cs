@@ -14,6 +14,7 @@ using System.Web.Mvc;
 namespace Store.Web.Controllers
 {
     [Authorize]
+    [RoutePrefix("Orders")]
     public class OrderController : Controller
     {
         private OrderService service;
@@ -27,6 +28,7 @@ namespace Store.Web.Controllers
 
         }
         // GET: Order
+        [Route("")]
         public ActionResult Index(string searchString, int? page)
         {
             IEnumerable<AllOrdersVM> vms;
@@ -57,6 +59,7 @@ namespace Store.Web.Controllers
 
 
         [HttpGet]
+        [Route("Create")]
         public ActionResult Create()
         {
             return View();
@@ -64,7 +67,7 @@ namespace Store.Web.Controllers
 
         // POST: Order/Create
         [HttpPost]
-       // public ActionResult Create([Bind(Include = "ModelName, ClientName, City, School, PhoneNumber, TestDate, ")]CreateOrderBM bind)
+        [Route("Create")]
         public ActionResult Create(CreateOrderBM bind)
         {
 
@@ -83,13 +86,14 @@ namespace Store.Web.Controllers
         }
 
         // GET: Order/Edit/5
+        [Route("Edit/{id}")]
         public ActionResult Edit(int id)
         {
             EditOrderVM vm = service.GetEditOrderVM(id);
 
-             List<Worker> workers = service.getAllWorkers();
+            List<Worker> workers = service.getAllWorkers();
 
-                vm.Workers = GetSelectedListWorker(workers);
+            vm.Workers = GetSelectedListWorker(workers);
 
             return View(vm);
         }
@@ -99,7 +103,8 @@ namespace Store.Web.Controllers
 
         // POST: Order/Edit/5
         [HttpPost]
-        public ActionResult Edit(EditOrderBM bind )
+        [Route("Edit/{id}")]
+        public ActionResult Edit(EditOrderBM bind)
         {
 
             EditOrderVM vm = service.GetEditOrderVM(bind.Id);
@@ -110,17 +115,17 @@ namespace Store.Web.Controllers
 
             if (this.ModelState.IsValid)
             {
-                service.GetEditOrderVM(bind);
+                service.EditOrder(bind);
 
                 return this.RedirectToAction("Index");
             }
 
 
             return View(vm);
-            
+
         }
 
-
+        [Route("{id}")]
         public ActionResult Details(int id)
         {
 
@@ -131,6 +136,7 @@ namespace Store.Web.Controllers
 
 
         [HttpGet]
+        [Route("{Id}/AddManipulation")]
         public ActionResult AddManipulation(int id)
         {
             CreateManipulationVM vm = service.GetCreateManipulationVM(id);
@@ -148,6 +154,7 @@ namespace Store.Web.Controllers
         }
 
         [HttpPost]
+        [Route("{Id}/AddManipulation")]
         public ActionResult AddManipulation(int id, CreateManipulationBM bind)
         {
             if (this.ModelState.IsValid)
@@ -157,7 +164,65 @@ namespace Store.Web.Controllers
                 return this.RedirectToAction("Details", new { id });
             }
 
-            return View();
+            CreateManipulationVM vm = service.GetCreateManipulationVM(id);
+
+            List<Worker> workers = service.getAllWorkers();
+
+            IEnumerable<Category> categories = service.getAllCategoris();
+
+
+
+            vm.Workers = GetSelectedListWorker(workers);
+            vm.Categories = GetSelectedListCategories(categories);
+
+
+            return View(vm);
+        }
+
+
+        [HttpGet]
+        [Route("{orderId}/Manipulations/{manId}/Edit")]
+        public ActionResult EditManipulation(int orderId, int manId)
+        {
+
+            EditManipulationVM vm = service.GetEditManipulationVM(orderId, manId);
+
+            List<Worker> workers = service.getAllWorkers();
+
+            IEnumerable<Category> categories = service.getAllCategoris();
+
+
+
+            vm.Workers = GetSelectedListWorker(workers);
+            vm.Categories = GetSelectedListCategories(categories);
+
+
+            return View(vm);
+        }
+
+
+        [HttpPost]
+        [Route("{orderId}/Manipulations/{manId}/Edit")]
+        public ActionResult EditManipulation(int orderId, int manId, EditManipulationBM bind)
+        {
+            if (this.ModelState.IsValid)
+            {
+                this.service.EditManipulation(manId, bind);
+                return  this.RedirectToAction("Details", new { id = orderId });
+            }
+
+            EditManipulationVM vm = service.GetEditManipulationVM(orderId, manId);
+
+            List<Worker> workers = service.getAllWorkers();
+
+            IEnumerable<Category> categories = service.getAllCategoris();
+
+
+
+            vm.Workers = GetSelectedListWorker(workers);
+            vm.Categories = GetSelectedListCategories(categories);
+
+            return View(vm);
         }
 
 
@@ -190,7 +255,7 @@ namespace Store.Web.Controllers
             {
                 selectList.Add(new SelectListItem
                 {
-                    Value = category.Id.ToString(),
+                    Value = category.Name,
                     Text = category.Name
                 });
             }

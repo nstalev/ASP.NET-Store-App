@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Store.Models.BindingModels.Manipulations
 {
-    public class CreateManipulationBM
+    public class EditManipulationBM
     {
         [Required]
         public string Description { get; set; }
@@ -17,11 +17,10 @@ namespace Store.Models.BindingModels.Manipulations
 
         public int Amount { get; set; }
 
-        [Required]
+
         public string Worker { get; set; }
 
-        [Required]
-        public string Category { get; set; }
 
+        public string Category { get; set; }
     }
 }
