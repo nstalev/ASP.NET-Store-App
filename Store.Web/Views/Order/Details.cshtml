@@ -145,6 +145,10 @@
 
                     </th>
                     <th>
+                        @Html.DisplayName("Дата")
+
+                    </th>
+                    <th>
                         @Html.DisplayName("Работник")
 
                     </th>
@@ -157,26 +161,29 @@
 
                 @foreach (var item in Model.Manipulations)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Amount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TimeNeeded)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Worker)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "EditManipulation", new { orderId = Model.Id, manId = item.Id })
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TimeNeeded)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ManipulationDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Worker)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditManipulation", new { orderId = Model.Id, manId = item.Id })
+                    </td>
+                </tr>
 }
 
             </table>

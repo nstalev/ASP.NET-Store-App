@@ -14,6 +14,8 @@ namespace Store.Models.ViewModels.Manipulations
 
         public int Amount { get; set; }
 
+        public DateTime ManipulationDate { get; set; }
+
         public int TimeNeeded { get; set; }
 
         public string Worker { get; set; }

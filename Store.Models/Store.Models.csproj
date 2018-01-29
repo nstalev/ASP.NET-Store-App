@@ -93,6 +93,7 @@
     <Compile Include="BindingModels\Manipulations\EditManipulationBM.cs" />
     <Compile Include="BindingModels\Orders\CreateOrderBM.cs" />
     <Compile Include="BindingModels\Orders\EditOrderBM.cs" />
+    <Compile Include="BindingModels\Payments\PaySearchWorkersBM.cs" />
     <Compile Include="EntityModels\ApplicationUser.cs" />
     <Compile Include="EntityModels\Categories\Category.cs" />
     <Compile Include="EntityModels\Manipulations\Manipulation.cs" />
@@ -126,7 +127,9 @@
     <Compile Include="ViewModels\Orders\CreateOrderVM.cs" />
     <Compile Include="ViewModels\Orders\DetailsOrderVM.cs" />
     <Compile Include="ViewModels\Orders\EditOrderVM.cs" />
+    <Compile Include="ViewModels\Payments\PayCategoriesVM.cs" />
     <Compile Include="ViewModels\Payments\PaySearchWorkersVM.cs" />
+    <Compile Include="ViewModels\Payments\PayWorkersResultVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
