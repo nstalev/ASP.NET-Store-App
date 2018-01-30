@@ -4,14 +4,13 @@ using Store.Models.ViewModels.Payments;
 using Store.Services;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Store.Web.Controllers
 {
 
     [RoutePrefix("Payments")]
+    [Authorize]
     public class PaymentsController : Controller
     {
 

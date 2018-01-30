@@ -7,10 +7,12 @@
 
 
 <div class="container-fluid">
+
+    
     <div class="row">
         <div class="col-md-5">
             <h2>Детаилна информация</h2>
-            <h3>Поръчка номрер:  @Html.DisplayFor(model => model.Id)</h3>
+            <p>Поръчка номрер:  @Html.DisplayFor(model => model.Id)</p>
             <div>
                 <hr />
                 <dl class="dl-horizontal">
@@ -120,17 +122,13 @@
 
                 </dl>
             </div>
-            <p>
-                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-                @Html.ActionLink("Back to List", "Index")
-            </p>
+
         </div>
+        
         <div class="col-md-7">
             <h2>Манипулации</h2>
-
             @Html.ActionLink("Добави Манипулация", "AddManipulation", new { id = Model.Id }, new { @class = "btn btn-primary" })
-            <br/>
-
+            <br>
             <table class="table table-bordered table-striped">
                 <tr>
                     <th>
@@ -161,29 +159,29 @@
 
                 @foreach (var item in Model.Manipulations)
         {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Amount)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TimeNeeded)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ManipulationDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Worker)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Category)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "EditManipulation", new { orderId = Model.Id, manId = item.Id })
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TimeNeeded)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ManipulationDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Worker)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditManipulation", new { orderId = Model.Id, manId = item.Id })
+                </td>
+            </tr>
 }
 
             </table>
@@ -193,4 +191,8 @@
 
         </div>
     </div>
- </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

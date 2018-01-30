@@ -43,8 +43,6 @@ namespace Store.Services
                 CategoriesVM = categoriesResult
             };
 
-
-
             return vm;
         }
 
@@ -55,53 +53,49 @@ namespace Store.Services
         public PayCategoryResultVM GetCategoriesResult(IEnumerable<Manipulation> manipulations)
         {
 
-            List<PayCategoriesVM> allCateg = new List<PayCategoriesVM>();
+            List<PayCategoriesVM> allCategories = new List<PayCategoriesVM>();
 
             Dictionary<string, Dictionary<string, double>> categories_time = new Dictionary<string, Dictionary<string, double>>();
 
-            foreach (var manip in manipulations)
+            foreach (var manipulation in manipulations)
             {
-                if (!categories_time.ContainsKey(manip.Category.Name))
+                if (!categories_time.ContainsKey(manipulation.Category.Name))
                 {
-                    categories_time.Add(manip.Category.Name, new Dictionary<string, double>());
-                    categories_time[manip.Category.Name].Add("Time", 0);
-                    categories_time[manip.Category.Name].Add("PricePerHour", manip.Category.PricePerHour);
+                    categories_time.Add(manipulation.Category.Name, new Dictionary<string, double>());
+                    categories_time[manipulation.Category.Name].Add("Time", 0);
+                    categories_time[manipulation.Category.Name].Add("PricePerHour", manipulation.Category.PricePerHour);
                 }
 
-                categories_time[manip.Category.Name]["Time"] += manip.TimeNeeded;
-
-
+                categories_time[manipulation.Category.Name]["Time"] += manipulation.TimeNeeded;
             }
 
-           // double timeSum = 0;
             int minutesSum = 0;
             double paymentSum = 0;
 
-            foreach (var categ in categories_time)
+            foreach (var category in categories_time)
             {
-                int minutes = int.Parse(categ.Value["Time"].ToString());
+                int minutes = int.Parse(category.Value["Time"].ToString());
 
-                double timeInHours = categ.Value["Time"] / 60;
-                double payment = timeInHours * categ.Value["PricePerHour"];
+                double timeInHours = category.Value["Time"] / 60;
+                double payment = timeInHours * category.Value["PricePerHour"];
 
                 PayCategoriesVM vm = new PayCategoriesVM()
                 {
-                    Name = categ.Key,
+                    Name = category.Key,
                     Hours = minutes / 60,
                     Minutes = minutes % 60,
                     Payment = payment
                 };
 
-               // timeSum += categ.Value["Time"];
                 minutesSum += minutes;
                 paymentSum += payment;
 
-                allCateg.Add(vm);
+                allCategories.Add(vm);
             }
 
             PayCategoryResultVM resultVM = new PayCategoryResultVM()
             {
-                Categories = allCateg,
+                Categories = allCategories,
                 AllPayment = paymentSum,
                 SumHours = minutesSum / 60,
                 SumMinutes = minutesSum % 60
