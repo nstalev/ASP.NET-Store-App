@@ -23,12 +23,12 @@ namespace Store.Models.ViewModels.Orders
         public string PhoneNumber { get; set; }
 
 
-        public DateTime DateCreated { get; set; }
+        public string DateCreated { get; set; }
 
 
-        public DateTime TestDate { get; set; }
+        public string TestDate { get; set; }
 
-        public DateTime WedingDate { get; set; }
+        public string WedingDate { get; set; }
 
 
         public int ChestLap { get; set; }

@@ -12,7 +12,7 @@ namespace Store.Models.ViewModels.Orders
 
         public string City { get; set; }
 
-        public DateTime WedingDate { get; set; }
+        public string WedingDate { get; set; }
 
     }
 }

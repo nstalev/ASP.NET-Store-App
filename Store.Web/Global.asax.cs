@@ -33,9 +33,23 @@ namespace Store.Web
             {
                 expression.CreateMap<CreateOrderBM, Order>();
                 expression.CreateMap<CreateOrderBM, AllOrdersVM>();
-                expression.CreateMap<Order, DetailsOrderVM>();
                 expression.CreateMap<Category, AllCategoriesVM>();
                 expression.CreateMap<Category, EditCategoryVM>();
+
+                expression.CreateMap<Order, AllOrdersVM>()
+                .ForMember(c => c.WedingDate, configurationExpression =>
+                     configurationExpression.MapFrom(u => u.WedingDate.ToString("dd/M/yyyy", CultureInfo.InvariantCulture)));
+
+
+                expression.CreateMap<Order, DetailsOrderVM>()
+                .ForMember(c => c.DateCreated, configurationExpression =>
+                     configurationExpression.MapFrom(u => u.DateCreated.ToString("dd/M/yyyy", CultureInfo.InvariantCulture)))
+                .ForMember(c => c.TestDate, configurationExpression =>
+                     configurationExpression.MapFrom(u => u.TestDate.ToString("dd/M/yyyy", CultureInfo.InvariantCulture)))
+                .ForMember(c => c.WedingDate, configurationExpression =>
+                     configurationExpression.MapFrom(u => u.WedingDate.ToString("dd/M/yyyy", CultureInfo.InvariantCulture)));
+
+
 
                 expression.CreateMap<Manipulation, PayManipulationsVM>()
                 .ForMember(c => c.Category, configurationExpression =>
@@ -47,7 +61,9 @@ namespace Store.Web
                 .ForMember(c => c.Worker, configurationExpression =>
                      configurationExpression.MapFrom(u => u.Worker.Name))
                 .ForMember(c => c.Category, configurationExpression =>
-                     configurationExpression.MapFrom(u => u.Category.Name));
+                     configurationExpression.MapFrom(u => u.Category.Name))
+                .ForMember(c => c.ManipulationDate, configurationExpression =>
+                     configurationExpression.MapFrom(u => u.ManipulationDate.ToString("dd/M/yyyy", CultureInfo.InvariantCulture))); ;
 
                 expression.CreateMap<Manipulation, EditManipulationVM>()
                 .ForMember(c => c.Worker, configurationExpression =>
