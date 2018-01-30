@@ -66,9 +66,7 @@ namespace Store.Web.Controllers
 
             PayWorkersResultVM vm = service.getPayWorkersResultVM(worker, startDate, endDate);
 
-            int dsa = 5;
-
-            return View();
+            return View(vm);
         }
 
 

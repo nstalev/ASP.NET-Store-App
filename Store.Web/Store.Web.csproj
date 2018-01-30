@@ -402,6 +402,7 @@
     <Content Include="Views\Order\EditManipulation.cshtml" />
     <Content Include="Views\Payments\Index.cshtml" />
     <Content Include="Views\Payments\Workers.cshtml" />
+    <Content Include="Views\Payments\WorkersResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

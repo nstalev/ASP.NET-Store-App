@@ -1,0 +1,70 @@
+﻿@model Store.Models.ViewModels.Payments.PayWorkersResultVM
+
+@{
+    ViewBag.Title = "WorkersResult";
+}
+
+<h3>Работник:  @Html.DisplayFor(modelItem => Model.Name)</h3>
+<h4>Дата от:  @Html.DisplayFor(modelItem => Model.StartDate)</h4>
+<h4>Дата до:  @Html.DisplayFor(modelItem => Model.EndDate)</h4>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-striped">
+                <tr>
+                    <th>
+                        @Html.DisplayName("Описание")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Количество")
+
+                    </th>
+                    <th>
+                        @Html.DisplayName("Необходимо време")
+
+                    <th>
+                        @Html.DisplayName("Дата")
+
+                    </th>
+                    <th>
+                        @Html.DisplayName("Категория")
+
+                    </th>
+                    @foreach (var item in Model.Manipulations)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Amount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TimeNeeded)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ManipulationDate)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category)
+                        </td>
+
+                    </tr>
+                }
+
+
+                </table>
+
+
+
+            </div>
+            <div class="col-md-6">
+
+            </div>
+        </div>
+
+    </div>
+
+

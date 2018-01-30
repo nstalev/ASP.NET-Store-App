@@ -18,7 +18,7 @@ namespace Store.Data
 
         public DbSet<Order> Orders { get; set; }
         public DbSet<Worker> Workers { get; set; }
-        public DbSet<Manipulation> Manipulation { get; set; }
+        public DbSet<Manipulation> Manipulations { get; set; }
         public DbSet<Category> Categories { get; set; }
 
 

@@ -46,10 +46,10 @@ namespace Store.Services
 
         public IEnumerable<AllOrdersVM> GetAllOrdersVM()
         {
-            IEnumerable<Order> orders = context.Orders.OrderByDescending(o => o.DateCreated);
 
-            IEnumerable<AllOrdersVM> vms = Mapper.Map<IEnumerable<Order>, IEnumerable<AllOrdersVM>>(orders);
+             IEnumerable<Order> orders = context.Orders.OrderByDescending(o => o.DateCreated);
 
+             IEnumerable<AllOrdersVM> vms = Mapper.Map<IEnumerable<Order>, IEnumerable<AllOrdersVM>>(orders);
 
 
             return vms;
@@ -150,7 +150,7 @@ namespace Store.Services
                 Worker = currentWorker
             };
 
-            context.Manipulation.Add(manipulation);
+            context.Manipulations.Add(manipulation);
             context.SaveChanges();
 
            
@@ -159,7 +159,7 @@ namespace Store.Services
         public EditManipulationVM GetEditManipulationVM(int orderId, int manId)
         {
 
-            Manipulation manipulation = context.Manipulation.Find(manId);
+            Manipulation manipulation = context.Manipulations.Find(manId);
 
             EditManipulationVM vm = Mapper.Map<Manipulation, EditManipulationVM>(manipulation);
 
@@ -168,7 +168,7 @@ namespace Store.Services
 
         public void EditManipulation(int manId, EditManipulationBM bind)
         {
-            Manipulation currentManipulation = context.Manipulation.Find(manId);
+            Manipulation currentManipulation = context.Manipulations.Find(manId);
 
 
             Worker selectedWorker = context.Workers.FirstOrDefault(w => w.Name == bind.Worker);
