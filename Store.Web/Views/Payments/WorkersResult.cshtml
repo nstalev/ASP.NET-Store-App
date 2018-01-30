@@ -60,9 +60,40 @@
 
 
             </div>
-            <div class="col-md-6">
+        <div class="col-md-6">
+            <table class="table table-striped">
+                <tr>
+                    <th>
+                        @Html.DisplayName("Категория")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Време")
 
-            </div>
+                    </th>
+                    <th>
+                        @Html.DisplayName("Плащане")
+
+
+                        @foreach (var item in Model.CategoriesVM.Categories)
+                {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hours):@Html.DisplayFor(modelItem => item.Minutes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Payment)лв.
+                </td>
+
+            </tr>
+}
+                    </table>
+
+                    <h3>Общо време: @Html.DisplayFor(modelItem => Model.CategoriesVM.SumHours):@Html.DisplayFor(modelItem => Model.CategoriesVM.SumMinutes)</h3>
+                    <h3>Общо плащане: @Html.DisplayFor(modelItem => Model.CategoriesVM.AllPayment)лв.</h3>
+                </div>
         </div>
 
     </div>

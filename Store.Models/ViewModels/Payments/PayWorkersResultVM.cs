@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Store.Models.ViewModels.Payments.ByWorker;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,6 @@ namespace Store.Models.ViewModels.Payments
 
         public IEnumerable<PayManipulationsVM> Manipulations { get; set; }
 
-        public IEnumerable<PayCategoriesVM> Categories { get; set; }
+        public PayCategoryResultVM CategoriesVM { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace Store.Models.BindingModels.Categories
 
         public string Name { get; set; }
 
-        public decimal PricePerHour { get; set; }
+        public double PricePerHour { get; set; }
 
         public bool IsActive { get; set; }
     }

@@ -127,7 +127,8 @@
     <Compile Include="ViewModels\Orders\CreateOrderVM.cs" />
     <Compile Include="ViewModels\Orders\DetailsOrderVM.cs" />
     <Compile Include="ViewModels\Orders\EditOrderVM.cs" />
-    <Compile Include="ViewModels\Payments\PayCategoriesVM.cs" />
+    <Compile Include="ViewModels\Payments\ByWorker\PayCategoriesVM.cs" />
+    <Compile Include="ViewModels\Payments\ByWorker\PayCategoryResultVM.cs" />
     <Compile Include="ViewModels\Payments\PayManipulationsVM.cs" />
     <Compile Include="ViewModels\Payments\PaySearchWorkersVM.cs" />
     <Compile Include="ViewModels\Payments\PayWorkersResultVM.cs" />

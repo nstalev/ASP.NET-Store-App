@@ -19,7 +19,7 @@ namespace Store.Models.EntityModels.Categories
         
 
         [Required]
-        public decimal PricePerHour { get; set; }
+        public double PricePerHour { get; set; }
 
 
         public bool IsActive { get; set; }

@@ -8,6 +8,6 @@ namespace Store.Models.BindingModels.Categories
         public string Name { get; set; }
 
         [Required]
-        public decimal PricePerHour { get; set; }
+        public double PricePerHour { get; set; }
     }
 }
