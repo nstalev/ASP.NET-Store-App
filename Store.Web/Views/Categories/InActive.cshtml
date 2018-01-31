@@ -18,7 +18,7 @@
 
     </div>
 </div>
-<table class="table">
+<table class="table table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -46,3 +46,7 @@
     }
 
 </table>
+
+<div>
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary btn-sm" })
+</div>
