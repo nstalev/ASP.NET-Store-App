@@ -15,108 +15,108 @@
             <p>Поръчка номрер:  @Html.DisplayFor(model => model.Id)</p>
             <div>
                 <hr />
-                <dl class="dl-horizontal">
-                    <dt>
+                <dl class="row">
+                    <dt class="col-md-5 text-right">
                         @Html.DisplayNameFor(model => model.ModelName)
                     </dt>
 
-                    <dd>
+                    <dd class="col-md-7 ">
                         @Html.DisplayFor(model => model.ModelName)
                     </dd>
 
-                    <dt>
+                    <dt class="col-md-5 text-right">
                         @Html.DisplayNameFor(model => model.ClientName)
                     </dt>
 
-                    <dd>
+                    <dd class="col-md-7">
                         @Html.DisplayFor(model => model.ClientName)
                     </dd>
 
-                    <dt>
+                    <dt  class="col-md-5 text-right">
                         @Html.DisplayNameFor(model => model.City)
                     </dt>
 
-                    <dd>
+                    <dd class="col-md-7">
                         @Html.DisplayFor(model => model.City)
                     </dd>
 
-                    <dt>
+                    <dt  class="col-md-5 text-right">
                         @Html.DisplayNameFor(model => model.School)
                     </dt>
 
-                    <dd>
+                    <dd class="col-md-7">
                         @Html.DisplayFor(model => model.School)
                     </dd>
 
-                    <dt>
+                    <dt  class="col-md-5 text-right">
                         @Html.DisplayNameFor(model => model.PhoneNumber)
                     </dt>
 
-                    <dd>
+                    <dd class="col-md-7">
                         @Html.DisplayFor(model => model.PhoneNumber)
                     </dd>
 
-                    <dt>
+                    <dt  class="col-md-5 text-right">
                         @Html.DisplayNameFor(model => model.DateCreated)
                     </dt>
 
-                    <dd>
+                    <dd class="col-md-7">
                         @Html.DisplayFor(model => model.DateCreated)
                     </dd>
 
-                    <dt>
+                    <dt class="col-md-5 text-right">
                         @Html.DisplayNameFor(model => model.TestDate)
                     </dt>
 
-                    <dd>
+                    <dd class="col-md-7">
                         @Html.DisplayFor(model => model.TestDate)
                     </dd>
 
-                    <dt>
+                    <dt class="col-md-5 text-right">
                         @Html.DisplayNameFor(model => model.WedingDate)
                     </dt>
 
-                    <dd>
+                    <dd class="col-md-7">
                         @Html.DisplayFor(model => model.WedingDate)
                     </dd>
 
-                    <dt>
+                    <dt class="col-md-5 text-right">
                         @Html.DisplayNameFor(model => model.ChestLap)
                     </dt>
 
-                    <dd>
+                    <dd class="col-md-7">
                         @Html.DisplayFor(model => model.ChestLap)
                     </dd>
 
-                    <dt>
+                    <dt class="col-md-5 text-right">
                         @Html.DisplayNameFor(model => model.PodgradnaLap)
                     </dt>
 
-                    <dd>
+                    <dd class="col-md-7">
                         @Html.DisplayFor(model => model.PodgradnaLap)
                     </dd>
 
-                    <dt>
+                    <dt class="col-md-5 text-right">
                         @Html.DisplayNameFor(model => model.Waist)
                     </dt>
 
-                    <dd>
+                    <dd class="col-md-7">
                         @Html.DisplayFor(model => model.Waist)
                     </dd>
 
-                    <dt>
+                    <dt class="col-md-5 text-right">
                         @Html.DisplayNameFor(model => model.LowWaist)
                     </dt>
 
-                    <dd>
+                    <dd class="col-md-7">
                         @Html.DisplayFor(model => model.LowWaist)
                     </dd>
 
-                    <dt>
+                    <dt class="col-md-5 text-right">
                         @Html.DisplayNameFor(model => model.CutOutDressWorkerName)
                     </dt>
 
-                    <dd>
+                    <dd class="col-md-7">
                         @Html.DisplayFor(model => model.CutOutDressWorkerName)
                     </dd>
 
@@ -127,7 +127,7 @@
         
         <div class="col-md-7">
             <h2>Манипулации</h2>
-            @Html.ActionLink("Добави Манипулация", "AddManipulation", new { id = Model.Id }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Добави Манипулация", "AddManipulation", new { id = Model.Id }, new { @class = "btn btn-outline-primary btn-lg btn-block" })
             <br>
             <table class="table table-bordered table-striped">
                 <tr>
@@ -179,7 +179,7 @@
                     @Html.DisplayFor(modelItem => item.Category)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "EditManipulation", new { orderId = Model.Id, manId = item.Id })
+                    @Html.ActionLink("Edit", "EditManipulation", new { orderId = Model.Id, manId = item.Id }, new { @class = "btn btn-outline-warning btn-sm" })
                 </td>
             </tr>
 }
