@@ -18,7 +18,7 @@ namespace Store.Services
 {
     public class OrderService : Service
     {
-        public void CreateNewOrder(string userName,CreateOrderBM bind)
+        public void CreateNewOrder(string userName, CreateOrderBM bind)
         {
             Order newOrder = Mapper.Map<CreateOrderBM, Order>(bind);
 
@@ -26,7 +26,7 @@ namespace Store.Services
 
             newOrder.CutOutDressWorker = worker;
             newOrder.DateCreated = DateTime.Now;
-            
+
             context.Orders.Add(newOrder);
             context.SaveChanges();
 
@@ -45,7 +45,7 @@ namespace Store.Services
                 || o.ModelName.ToLower().Contains(search.ToLower()))
                 .Count();
             }
-               
+
         }
 
         public IEnumerable<AllOrdersVM> GetOrders(string search, int page)
@@ -64,10 +64,10 @@ namespace Store.Services
             else
             {
                 orders = this.context.Orders
-                .OrderByDescending(o => o.DateCreated)
                 .Where(o => o.ClientName.ToLower().Contains(search.ToLower())
-                 || o.ModelName.ToLower().Contains(search.ToLower()))
-                .Skip(ModelsConstants.OrdersListingPagesize * (page - 1))
+                || o.ModelName.ToLower().Contains(search.ToLower()))
+                .OrderByDescending(o => o.DateCreated)
+                .Skip((page - 1) * ModelsConstants.OrdersListingPagesize)
                 .Take(ModelsConstants.OrdersListingPagesize)
                 .ToList();
             }
@@ -157,8 +157,8 @@ namespace Store.Services
         {
 
             Order currentOrder = context.Orders.Find(orderId);
-             Worker currentWorker = context.Workers.FirstOrDefault(w => w.Name == bind.Worker);
-           // Worker currentWorker = context.Workers.Find(int.Parse(bind.Worker));
+            Worker currentWorker = context.Workers.FirstOrDefault(w => w.Name == bind.Worker);
+            // Worker currentWorker = context.Workers.Find(int.Parse(bind.Worker));
             Category selectedCategory = context.Categories.FirstOrDefault(c => c.Name == bind.Category);
 
 
@@ -176,7 +176,7 @@ namespace Store.Services
             context.Manipulations.Add(manipulation);
             context.SaveChanges();
 
-           
+
         }
 
         public EditManipulationVM GetEditManipulationVM(int orderId, int manId)

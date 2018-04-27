@@ -35,22 +35,20 @@
 
     var searchQuery = string.IsNullOrEmpty(Model.Search) ? string.Empty : ("Search=" + Model.Search + "&");
 
-    var ds = 5;
-
 }
 
 <ul class="pagination">
     <li class="page-item @peviousPageDisable">
-        <a class="page-link  @peviousPageDisable" href="Index?@(searchQuery)page=@Model.PreviousPage" tabindex="-1">Previous</a>
+        <a class="page-link  @peviousPageDisable" href="?@(searchQuery)page=@Model.PreviousPage" tabindex="-1">Previous</a>
     </li>
     @for (int i = 1; i <= Model.TotalPages; i++)
     {
-        <li class="page-item @(Model.CurrentPage == i ? "active": String.Empty)"><a class="page-link" href="Index?@(searchQuery)page=@i">@i</a></li>
+        <li class="page-item @(Model.CurrentPage == i ? "active": String.Empty)"><a class="page-link" href="?@(searchQuery)page=@i">@i</a></li>
 
 
     }
     <li class="page-item @nextPageDisable">
-        <a class="page-link @nextPageDisable" href="Index?@(searchQuery)page=@Model.NextPage">Next</a>
+        <a class="page-link @nextPageDisable" href="?@(searchQuery)page=@Model.NextPage">Next</a>
     </li>
 </ul>
 
