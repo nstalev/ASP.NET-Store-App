@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Store.Models;
 using Store.Models.BindingModels.Manipulations;
 using Store.Models.BindingModels.Orders;
 using Store.Models.EntityModels;
@@ -31,30 +32,52 @@ namespace Store.Services
 
         }
 
-        public IEnumerable<AllOrdersVM> GetAllOrdersVMWithSearching(string searchString)
+        public int Total(string search)
         {
-            IEnumerable<Order> orders = context.Orders.Where(n => n.ClientName.Contains(searchString) 
-                || n.ModelName.Contains(searchString))
-                .OrderByDescending(o => o.DateCreated);
+            if (String.IsNullOrEmpty(search))
+            {
+                return this.context.Orders.Count();
+            }
+            else
+            {
+                return this.context.Orders
+                .Where(o => o.ClientName.ToLower().Contains(search.ToLower())
+                || o.ModelName.ToLower().Contains(search.ToLower()))
+                .Count();
+            }
+               
+        }
+
+        public IEnumerable<AllOrdersVM> GetOrders(string search, int page)
+        {
+
+            var orders = new List<Order>();
+
+            if (String.IsNullOrEmpty(search))
+            {
+                orders = this.context.Orders
+                .OrderByDescending(o => o.DateCreated)
+                .Skip(ModelsConstants.OrdersListingPagesize * (page - 1))
+                .Take(ModelsConstants.OrdersListingPagesize)
+                .ToList();
+            }
+            else
+            {
+                orders = this.context.Orders
+                .OrderByDescending(o => o.DateCreated)
+                .Where(o => o.ClientName.ToLower().Contains(search.ToLower())
+                 || o.ModelName.ToLower().Contains(search.ToLower()))
+                .Skip(ModelsConstants.OrdersListingPagesize * (page - 1))
+                .Take(ModelsConstants.OrdersListingPagesize)
+                .ToList();
+            }
+
 
             IEnumerable<AllOrdersVM> vms = Mapper.Map<IEnumerable<Order>, IEnumerable<AllOrdersVM>>(orders);
 
-
             return vms;
         }
 
-
-        public IEnumerable<AllOrdersVM> GetAllOrdersVM()
-        {
-
-             IEnumerable<Order> orders = context.Orders.OrderByDescending(o => o.DateCreated);
-
-             IEnumerable<AllOrdersVM> vms = Mapper.Map<IEnumerable<Order>, IEnumerable<AllOrdersVM>>(orders);
-
-
-            return vms;
-
-        }
 
         public EditOrderVM GetEditOrderVM(int id)
         {

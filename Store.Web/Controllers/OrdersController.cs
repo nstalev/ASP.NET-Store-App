@@ -1,5 +1,6 @@
 ﻿using PagedList;
 using Store.Data;
+using Store.Models;
 using Store.Models.BindingModels.Manipulations;
 using Store.Models.BindingModels.Orders;
 using Store.Models.EntityModels;
@@ -14,46 +15,46 @@ using System.Web.Mvc;
 namespace Store.Web.Controllers
 {
     [Authorize]
-    [RoutePrefix("Orders")]
-    public class OrderController : Controller
+    public class OrdersController : Controller
     {
         private OrderService service;
         private StoreContext context;
 
 
-        public OrderController()
+        public OrdersController()
         {
             this.service = new OrderService();
             this.context = new StoreContext();
 
         }
         // GET: Order
-        [Route("")]
-        public ActionResult Index(string searchString, int? page)
+       // [Route("")]
+        public ActionResult Index(string search, int page = 1)
         {
-            IEnumerable<AllOrdersVM> vms;
-
-            if (searchString != null)
+            if (string.IsNullOrEmpty(search))
             {
-                page = 1;
+                search = "";
             }
 
+            int totalOrders = this.service.Total(search);
 
-            if (!String.IsNullOrEmpty(searchString))
+            var totalPages = (int)Math.Ceiling((double)totalOrders / ModelsConstants.OrdersListingPagesize);
+
+            page = Math.Max(page, 1);
+            page = Math.Min(page, totalPages);
+
+            var orders = this.service.GetOrders(search, page);
+
+
+            return View(new OrderListingViewModel
             {
-                vms = service.GetAllOrdersVMWithSearching(searchString);
-
-            }
-            else
-            {
-                vms = service.GetAllOrdersVM();
-
-            }
-
-            int pageSize = 5;
-            int pageNumber = (page ?? 1);
-
-            return View(vms.ToPagedList(pageNumber, pageSize));
+                CurrentPage = page,
+                Search = search,
+                TotalPages = totalPages,
+                TotalOrders = totalOrders,
+                Orders = orders
+                 
+            });
         }
 
 
@@ -125,7 +126,7 @@ namespace Store.Web.Controllers
 
         }
 
-        [Route("{id}")]
+       // [Route("{id}")]
         public ActionResult Details(int id)
         {
 

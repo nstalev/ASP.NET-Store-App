@@ -209,7 +209,7 @@
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\PaymentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -401,16 +401,16 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Order\Index.cshtml" />
-    <Content Include="Views\Order\Create.cshtml" />
-    <Content Include="Views\Order\Edit.cshtml" />
-    <Content Include="Views\Order\Details.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\Orders\Create.cshtml" />
+    <Content Include="Views\Orders\Edit.cshtml" />
+    <Content Include="Views\Orders\Details.cshtml" />
     <Content Include="Views\Categories\Create.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\InActive.cshtml" />
-    <Content Include="Views\Order\AddManipulation.cshtml" />
-    <Content Include="Views\Order\EditManipulation.cshtml" />
+    <Content Include="Views\Orders\AddManipulation.cshtml" />
+    <Content Include="Views\Orders\EditManipulation.cshtml" />
     <Content Include="Views\Payments\Index.cshtml" />
     <Content Include="Views\Payments\Workers.cshtml" />
     <Content Include="Views\Payments\WorkersResult.cshtml" />
