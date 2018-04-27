@@ -27,7 +27,7 @@
 </div>
 
 @{
-    var peviousPageDisable = Model.CurrentPage == 1 ? "disabled" : String.Empty;
+    var peviousPageDisable = Model.CurrentPage <= 1 ? "disabled" : String.Empty;
     var nextPageDisable = Model.CurrentPage == Model.TotalPages ? "disabled" : String.Empty;
 
     var routeValuePreviousPage = new Dictionary<string, string> { ["page"] = Model.PreviousPage.ToString() };
@@ -39,7 +39,7 @@
 
 <ul class="pagination">
     <li class="page-item @peviousPageDisable">
-        <a class="page-link  @peviousPageDisable" href="?@(searchQuery)page=@Model.PreviousPage" tabindex="-1">Previous</a>
+        <a class="page-link  @peviousPageDisable" href="?@(searchQuery)page=@Model.PreviousPage" >Previous</a>
     </li>
     @for (int i = 1; i <= Model.TotalPages; i++)
     {

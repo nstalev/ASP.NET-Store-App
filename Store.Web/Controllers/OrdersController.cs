@@ -1,5 +1,4 @@
-﻿using PagedList;
-using Store.Data;
+﻿using Store.Data;
 using Store.Models;
 using Store.Models.BindingModels.Manipulations;
 using Store.Models.BindingModels.Orders;
@@ -10,6 +9,7 @@ using Store.Models.ViewModels.Orders;
 using Store.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace Store.Web.Controllers
@@ -27,8 +27,7 @@ namespace Store.Web.Controllers
             this.context = new StoreContext();
 
         }
-        // GET: Order
-       // [Route("")]
+
         public ActionResult Index(string search, int page = 1)
         {
             if (string.IsNullOrEmpty(search))
@@ -38,12 +37,17 @@ namespace Store.Web.Controllers
 
             int totalOrders = this.service.Total(search);
 
+            var orders = new List<AllOrdersVM>();
+
+            if (totalOrders >  0)
+            {
+                orders = this.service.GetOrders(search, page).ToList(); ;
+            }
+
             var totalPages = (int)Math.Ceiling((double)totalOrders / ModelsConstants.OrdersListingPagesize);
 
             page = Math.Max(page, 1);
             page = Math.Min(page, totalPages);
-
-            var orders = this.service.GetOrders(search, page);
 
 
             return View(new OrderListingViewModel
@@ -53,7 +57,6 @@ namespace Store.Web.Controllers
                 TotalPages = totalPages,
                 TotalOrders = totalOrders,
                 Orders = orders
-                 
             });
         }
 

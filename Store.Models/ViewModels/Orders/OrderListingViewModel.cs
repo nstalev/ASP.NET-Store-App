@@ -15,7 +15,7 @@ namespace Store.Models.ViewModels.Orders
 
         public int TotalPages  { get; set; }
 
-        public int PreviousPage => CurrentPage == 1 ? 1 : this.CurrentPage - 1;
+        public int PreviousPage => CurrentPage <= 1 ? 1 : this.CurrentPage - 1;
 
         public int NextPage => CurrentPage == this.TotalPages ? this.TotalPages : this.CurrentPage + 1;
 
