@@ -13,12 +13,11 @@ namespace Store.Web.Controllers
     [Authorize]
     public class PaymentsController : Controller
     {
+        private readonly IPaymentsService service;
 
-        private readonly PaymentsService service;
-
-        public PaymentsController()
+        public PaymentsController(IPaymentsService service)
         {
-            this.service = new PaymentsService();
+            this.service = service;
         }
 
         // GET: Payments

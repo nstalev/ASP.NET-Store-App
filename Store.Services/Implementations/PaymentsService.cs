@@ -9,9 +9,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
-namespace Store.Services
+namespace Store.Services.Implementations
 {
-    public class PaymentsService : Service
+    public class PaymentsService : Service, IPaymentsService
     {
         public IEnumerable<Worker> getAllWorkers()
         {

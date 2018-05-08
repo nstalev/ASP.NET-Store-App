@@ -14,11 +14,11 @@ namespace Store.Web.Controllers
     public class CategoriesController : Controller
     {
 
-        private readonly CategoriesService service;
+        private readonly ICategoriesService service;
 
-        public CategoriesController()
+        public CategoriesController(ICategoriesService service)
         {
-            this.service = new CategoriesService();
+            this.service = service;
         }
 
 

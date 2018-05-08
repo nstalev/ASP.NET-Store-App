@@ -19,12 +19,12 @@ namespace Store.Web.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private AccountService service;
+        private IAccountService service;
 
 
-        public AccountController()
+        public AccountController(IAccountService service)
         {
-            this.service = new AccountService();
+            this.service = service;
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )

@@ -14,9 +14,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Store.Services
+namespace Store.Services.Implementations
 {
-    public class OrderService : Service
+    public class OrderService : Service, IOrderService
     {
         public void CreateNewOrder(string userName, CreateOrderBM bind)
         {

@@ -52,12 +52,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountService.cs" />
-    <Compile Include="CategoriesService.cs" />
-    <Compile Include="OrderService.cs" />
-    <Compile Include="PaymentsService.cs" />
+    <Compile Include="Implementations\AccountService.cs" />
+    <Compile Include="Implementations\CategoriesService.cs" />
+    <Compile Include="IAccountService.cs" />
+    <Compile Include="ICategoriesService.cs" />
+    <Compile Include="IPaymentsService.cs" />
+    <Compile Include="IOrderService.cs" />
+    <Compile Include="Implementations\OrderService.cs" />
+    <Compile Include="Implementations\PaymentsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service.cs" />
+    <Compile Include="Implementations\Service.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Store.Data\Store.Data.csproj">

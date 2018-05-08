@@ -17,13 +17,13 @@ namespace Store.Web.Controllers
     [Authorize]
     public class OrdersController : Controller
     {
-        private OrderService service;
+        private IOrderService service;
         private StoreContext context;
 
 
-        public OrdersController()
+        public OrdersController(IOrderService service)
         {
-            this.service = new OrderService();
+            this.service = service;
             this.context = new StoreContext();
 
         }

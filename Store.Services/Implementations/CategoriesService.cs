@@ -8,9 +8,9 @@ using Store.Models.BindingModels.Categories;
 using Store.Models.EntityModels.Categories;
 using Store.Models.ViewModels.Categories;
 
-namespace Store.Services
+namespace Store.Services.Implementations
 {
-    public class CategoriesService : Service
+    public class CategoriesService : Service, ICategoriesService
     {
         public void CreateNewCategory(CreateCategoryBM bind)
         {

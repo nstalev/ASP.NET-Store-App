@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Store.Services
+namespace Store.Services.Implementations
 {
-    public class AccountService : Service
+    public class AccountService : Service, IAccountService
     {
         public void creataWorker(string id)
         {
